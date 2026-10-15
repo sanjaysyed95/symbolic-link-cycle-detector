@@ -1,0 +1,17 @@
+{
+  "name": "symbolic-link-cycle-detector",
+  "version": "0.1.0",
+  "description": "Tracks resolved symlinks during directory traversal to detect cycles before recursion.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": "./src/index.js",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "dependencies": {}
+}
