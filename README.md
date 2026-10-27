@@ -39,3 +39,10 @@ There are two distinct "I've seen this before" conditions, and the API reports t
 - `revisited: true` with `cycle: false` — the path was entered in some earlier chain that has since been fully exited. On a real filesystem this is usually a cross-edge into an already-explored subtree, not a loop, but re-walking it duplicates work. Many walkers skip it; some don't.
 
 In both cases `entered` is `false` and the detector's state is **not** modified, so you must not call `exit()` for that path. The state is only advanced when `entered` is `true`, and only then should `exit()` be called on the way back up.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
